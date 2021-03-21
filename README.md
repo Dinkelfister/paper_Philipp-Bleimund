@@ -3,8 +3,6 @@
  
  Quick start:
  
- -Download the repository
- 
- -The EAGLE Folder is for the PCB design
- 
- -The FUSION Folder is for 3D Models of the finished PCB
+-Download the repository
+-The EAGLE Folder is for the PCB design
+-The FUSION Folder is for 3D Models of the finished PCB
