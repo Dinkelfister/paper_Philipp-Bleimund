@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0067)https://www.elektronik-kompendium.de/sites/raspberry-pi/2110081.htm -->
+<html itemscope="" itemtype="http://schema.org/Article" xmlns:g="http://base.google.com/ns/1.0" xmlns:fb="https://www.facebook.com/2008/fbml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="twitter:image" content="http://www.elektronik-kompendium.de/res/thumbs/rpi-gpio-633.jpg">
+<meta property="og:image" content="http://www.elektronik-kompendium.de/res/thumbs/rpi-gpio-633.jpg">
+<meta itemprop="image" content="http://www.elektronik-kompendium.de/res/thumbs/rpi-gpio-633.jpg">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/style.css" type="text/css" media="all">
+<script type="text/javascript" async="" src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/ga.js.Download"></script><script type="text/javascript" src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/jquery-1.11.1.min.js.Download"></script>
+<script type="text/javascript" src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/bootstrap.min.js.Download"></script>
+<title>Raspberry Pi: GPIO-Eingang mit Taster/Schalter beschalten</title>
+</head>
+<body class="page">
+
+<div id="page" class="hfeed site">
+
+<div class="container header-area">
+<header id="masthead" class="site-header col-sm-12" role="banner">
+
+<div class="site-branding col-md-4">
+<div id="logo"><a href="https://www.elektronik-kompendium.de/"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/logo.png" height="86" width="275"></a></div>
+<div class="hidden-lg hidden-md">
+<form method="get" action="https://www.elektronik-kompendium.de/service/suchen/suchen.php" target="_top" name="suchen"><input type="text" name="q" maxlength="255" placeholder="Suchen"><button type="submit" name="sa" class="btn" aria-label="Left Align"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></form>
+</div>
+</div>
+
+<div class="site-search col-md-4 hidden-xs hidden-sm">
+<form method="get" action="https://www.elektronik-kompendium.de/service/suchen/suchen.php" target="_top" name="suchen" class="form-inline"><input type="text" name="q" maxlength="255" placeholder="Suchen"> <button type="submit" name="sa" class="btn" aria-label="Left Align"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></form>
+</div>
+
+<div class="social-header col-md-4 hidden-xs hidden-sm">
+</div>
+
+</header>
+</div><!-- header-area -->
+
+<nav class="navbar navbar-default" role="navigation">
+<div class="container">
+<div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
+
+<div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav">
+<li><a href="https://www.elektronik-kompendium.de/" title="Startseite">Startseite</a></li>
+<li class="dropdown"><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2110081.htm#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Themen <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="https://www.elektronik-kompendium.de/sites/grd/index.htm">Elektronik Grundlagen</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/bau/index.htm">Bauelemente</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/slt/index.htm">Schaltungstechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/public/schaerer/index.htm">Elektronik Minikurse</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/praxis/index.htm">Elektronik Praxis</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/dig/index.htm">Digitaltechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/com/index.htm">Computertechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/kom/index.htm">Kommunikationstechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/net/index.htm">Netzwerktechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/sic/index.htm">Sicherheitstechnik</a></li>
+<li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/index.htm">Raspberry Pi</a></li>
+</ul></li>
+<li><a href="https://www.elektronik-kompendium.de/news/" title="News">News</a></li>
+<li><a href="https://www.elektronik-kompendium.de/forum/" title="Forum">Forum</a></li>
+<li><a href="https://www.elektronik-kompendium.de/shop/" title="Online-Shop">Online-Shop</a></li>
+</ul></div>
+
+</div>
+</nav><!-- navigation -->
+
+<div id="content" class="site-content container">
+<div class="row">
+
+<div id="primary" class="content-area col-sm-12 col-md-8">
+<main id="main" class="site-main" role="main">
+
+<!-- google_ad_section_start -->
+
+
+<h1>Raspberry Pi: GPIO-Eingang mit Taster/Schalter beschalten</h1>
+<p>Grundsätzlich kann man einen GPIO-Pin wahlweise als Eingang oder als Ausgang betreiben. Als Eingang kann er die Zustände "High" und "Low" einnehmen. Zum Beispiel von einem Schalter oder Taster.<br>
+  In der Regel ist es so, dass man die GPIOs des Raspberry Pi mit Widerständen beschaltet, um Eingänge auf einen definierten Pegel zu setzten (+VCC oder GND) oder um den Strom zu begrenzen.</p>
+<ul>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2006031.htm"> Grundlagen: GPIO beschalten</a></li>
+</ul>
+<div id="adalt1">
+<h4 style="text-align: center;">Video-Kurs: Raspberry Pi für Einsteiger</h4>
+<iframe width="600" height="300" src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/316210586.html" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>
+<p style="text-align: center; margin-top: 10px;"><a class="btn btn-success" href="https://www.digistore24.com/redir/260497/elektronikkompendium/CAMPAIGNKEY" target="_blank">Zum Video-Kurs Raspberry Pi für Einsteiger</a></p>
+</div><h3>GPIO-Eingang mit Taster/Schalter und Pullup-Widerstand</h3>
+<p><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/20060511.gif" alt="Pullup-Widerstand" width="247" height="300" hspace="5" vspace="5"></p>
+<p>Beim Pullup-Prinzip wird der GPIO-Eingang mit einem Pullup-Widerstand auf den Pegel von +VCC gezogen. Der Grundzustand des Eingangs wäre dann "High" bzw. "logisch 1". Mit einem Schalter oder Taster wird der GPIO-Eingang gegen Ground (GND) gezogen bzw. geschaltet. Das heißt, im geschalteten Zustand hätte der Eingang den Zustand "Low" bzw. "logisch 0".</p>
+<h3>GPIO-Eingang mit Taster/Schalter und Pulldown-Widerstand</h3>
+<p><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/20060512.gif" alt="Pulldown-Widerstand" width="247" height="300" hspace="5" vspace="5"></p>
+<p>Beim Pulldown-Prinzip wird der GPIO-Eingang mit einem Pulldown-Widerstand gegen Ground (GND) gezogen. Der Grundzustand des Eingangs wäre dann "Low" bzw. "logisch 0". Mit einem Schalter oder Taster wurd der GPIO-Eingang auf den Pegel von +VCC gezogen bzw. geschaltet. Das heißt, im geschalteten Zustand hätte der Eingang den Zustand "High" bzw. "logisch 1".</p>
+<h3>GPIO-Eingang mit Taster/Schalter und Querwiderstand</h3>
+<p><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/20060514.gif" alt="GPIO-Eingang mit Taster/Schalter und Querwiderstand" width="343" height="300" hspace="5" vspace="5"></p>
+<p>Grundsätzlich gilt, dass der Strom im geschalteten Zustand (Taster/Schalter betätigt) nur durch den Widerstand der inneren Bauteile begrenzt wird. Um den Strom in der äußeren Beschaltung zu begrenzen, wird gerne ein zusätzlicher Querwiderstand vor den GPIO-Eingang geschaltet.</p>
+<h3>Pullup- oder Pulldown-Widerstand?</h3>
+<p>Es wird empfohlen, GPIO-Eingänge mit einem Pullup- oder Pulldown-Widerstand zu beschalten. Die Frage ist, weshalb ist so ein Widerstand notwendig? Und welches Prinzip sollte man dabei anwenden? Also Pullup oder Pulldown? Und welche Größe sollten diese Widerstände haben?</p>
+<ul>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2006051.htm"> GPIO mit Pullup- oder Pulldown-Widerstand?</a></li>
+</ul>
+<h3>Weitere verwandte Themen:</h3>
+<ul>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2002191.htm">Raspberry Pi: GPIO - General Purpose Input Output</a></li>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/1907101.htm">Raspberry Pi: GPIO-Belegung</a></li>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2006031.htm">Raspberry Pi: GPIO beschalten</a></li>
+  <li><a href="https://www.elektronik-kompendium.de/sites/raspberry-pi/2006041.htm">Raspberry Pi: GPIO programmieren</a></li>
+</ul>
+
+<div class="panel panel-success">
+<div class="panel-heading"><h4 class="panel-title">Teilen:</h4></div>
+<div class="panel-body">
+<ul class="nav nav-pills">
+<noscript>
+<li role="presentation"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.elektronik-kompendium.de"><span class="fa fa-facebook fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="https://twitter.com/home?status=Elektronik-Kompendium+-+http%3A%2F%2Fwww.elektronik-kompendium.de"><span class="fa fa-twitter fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="mailto:?&subject=Link-Tipp:+Elektronik-Kompendium.de&body=http%3A%2F%2Fwww.elektronik-kompendium.de"><span class="fa fa-envelope fa-2x"></span></a></li>
+</noscript>
+<script>document.write ('<li role="presentation"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' + location.href + '"><span class="fa fa-facebook fa-2x"></span></a></li>');</script><li role="presentation"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elektronik-kompendium.de/sites/raspberry-pi/2110081.htm"><span class="fa fa-facebook fa-2x"></span></a></li>
+<script>document.write ('<li role="presentation"><a target="_blank" href="https://twitter.com/home?status=' + document.title + ' ' + location.href + '"><span class="fa fa-twitter fa-2x"></span></a></li>');</script><li role="presentation"><a target="_blank" href="https://twitter.com/home?status=Raspberry%20Pi:%20GPIO-Eingang%20mit%20Taster/Schalter%20beschalten%20https://www.elektronik-kompendium.de/sites/raspberry-pi/2110081.htm"><span class="fa fa-twitter fa-2x"></span></a></li>
+<script>document.write ('<li role="presentation"><a target="_blank" href="mailto:?&subject=Link-Tipp: ' + document.title + '&body=' + location.href + '"><span class="fa fa-envelope fa-2x"></span></a></li>');</script><li role="presentation"><a target="_blank" href="mailto:?&amp;subject=Link-Tipp:%20Raspberry%20Pi:%20GPIO-Eingang%20mit%20Taster/Schalter%20beschalten&amp;body=https://www.elektronik-kompendium.de/sites/raspberry-pi/2110081.htm"><span class="fa fa-envelope fa-2x"></span></a></li>
+<script>if (navigator.userAgent.match(/iPhone|Android/i)) { document.write ('<li role="presentation"><a href="watsapp://send?text=Link-Tipp: ' + document.title + ' ' + location.href + '"><span class="fa fa-whatsapp fa-2x"></span></a></li>') };</script>
+</ul>
+</div>
+</div>
+
+<h3>Produktempfehlungen</h3>
+<div class="row" id="ada1">
+<div class="col-md-4 col-sm-4 col-xs-6">
+<p align="center"><a href="https://www.amazon.de/Raspberry-Solderless-Breadboard-Expansion-Rainbow/dp/B01LXZQFPF?psc=1&amp;SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B01LXZQFPF" title="for Raspberry Pi 3 Kit 830 MB-102 Tie Points Solderless Breadboard + GPIO T Type Expansion Board + 65pcs Jumper Cables Wires + 40pin Rainbow Ribbon Cable K73" target="_blank" rel="nofollow"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/61riHI-6mHL._SL160_.jpg" srcset="https://images-eu.ssl-images-amazon.com/images/I/61riHI-6mHL.jpg" alt="for Raspberry Pi 3 Kit 830 MB-102 Tie Points Solderless Breadboard + GPIO T Type Expansion Board + 65pcs Jumper Cables Wires + 40pin Rainbow Ribbon Cable K73" width="50%"></a></p>
+<h5><a href="https://www.amazon.de/Raspberry-Solderless-Breadboard-Expansion-Rainbow/dp/B01LXZQFPF?psc=1&amp;SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B01LXZQFPF" target="_blank" rel="nofollow">GPIO-Expansion-KIT für Raspberry Pi</a></h5>
+</div>
+<div class="col-md-4 col-sm-4 col-xs-6">
+<p align="center"><a href="https://www.amazon.de/Raspberry-Breadboard-Kuman-Leiterplatte-Widerst%C3%A4nde/dp/B07CG6GPVK?psc=1&amp;SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B07CG6GPVK" title="FÃ¼r Arduino Raspberry Pi Holder Breadboard Kit, Kuman 7 in 1 RAB Holder, RPi GPIO Breakout Expansion Board, 830 Punkte LÃ¶tfreie Leiterplatte, WiderstÃ¤nde fÃ¼r Arduino Uno R3, Mega 2560 &amp; Raspberry Pi 3B/ 2B/ 1B+/ Zero/ Zero W SC23" target="_blank" rel="nofollow"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/61z47P9rDML._SL160_.jpg" srcset="https://images-eu.ssl-images-amazon.com/images/I/61z47P9rDML.jpg" alt="FÃ¼r Arduino Raspberry Pi Holder Breadboard Kit, Kuman 7 in 1 RAB Holder, RPi GPIO Breakout Expansion Board, 830 Punkte LÃ¶tfreie Leiterplatte, WiderstÃ¤nde fÃ¼r Arduino Uno R3, Mega 2560 &amp; Raspberry Pi 3B/ 2B/ 1B+/ Zero/ Zero W SC23" width="50%"></a></p>
+<h5><a href="https://www.amazon.de/Raspberry-Breadboard-Kuman-Leiterplatte-Widerst%C3%A4nde/dp/B07CG6GPVK?psc=1&amp;SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B07CG6GPVK" target="_blank" rel="nofollow">Board-Halter und Expansion-KIT für Arduino und Raspberry Pi</a></h5>
+</div>
+<div class="col-md-4 col-sm-4 col-xs-6">
+<p align="center"><a href="https://www.amazon.de/Freenove-Raspberry-Processing-Tutorials-Components/dp/B06VTH7L28?SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B06VTH7L28" title="Freenove RFID Starter Kit for Raspberry Pi | Beginner Learning | Model 3B+ 3B 2B 1B+ 1A+ Zero W | Python, C, Java, Processing | 53 Projects, 391 Pages Detailed Tutorials, 200+ Components" target="_blank" rel="nofollow"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/61enpZOor-L._SL160_.jpg" srcset="https://images-eu.ssl-images-amazon.com/images/I/61enpZOor-L.jpg" alt="Freenove RFID Starter Kit for Raspberry Pi | Beginner Learning | Model 3B+ 3B 2B 1B+ 1A+ Zero W | Python, C, Java, Processing | 53 Projects, 391 Pages Detailed Tutorials, 200+ Components" width="50%"></a></p>
+<h5><a href="https://www.amazon.de/Freenove-Raspberry-Processing-Tutorials-Components/dp/B06VTH7L28?SubscriptionId=AKIAJSD6R24JXZCAKM2Q&amp;tag=eonline&amp;linkCode=alb&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B06VTH7L28" target="_blank" rel="nofollow">Freenove Starter Kit für Raspberry Pi</a></h5>
+</div>
+</div>
+
+
+
+<div class="row" id="adalt2">
+<div class="col-md-4 col-sm-6"><a href="https://www.elektronik-kompendium.de/shop/buecher/elektronik-fibel"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/buch-efibel-300.jpg" border="0"></a></div>
+<div class="col-md-8 col-sm-6">
+<h4>Elektronik einfache und leicht verständlich</h4>
+<h5>Elektronik-Fibel</h5>
+<p>Die Elektronik-Fibel ist ein Buch über die Grundlagen der Elektronik, Bauelemente, Schaltungstechnik und Digitaltechnik.</p>
+<p><a href="https://www.elektronik-kompendium.de/shop/buecher/elektronik-fibel" class="btn btn-success">Das will ich haben!</a></p>
+</div>
+</div>
+
+<div id="adg1">
+<script async="" src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/f.txt"></script>
+<!-- Raspberry Pi, responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7453653573550802" data-ad-slot="3893429982" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<script type="text/javascript">
+$('#adalt1').insertBefore(document.getElementsByTagName('h3')[0]);
+
+window.setTimeout(function(){
+  if(adsbygoogle instanceof Array) {
+
+  }
+	else {
+	  $('#adg1').remove();
+	}
+}, 2500);
+</script>
+
+
+<!-- google_ad_section_end -->
+
+</main><!-- #main -->
+</div><!-- #primary -->
+
+<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+
+<aside class="widget">
+<h3 class="widget-title">Folge uns</h3>
+<ul class="nav nav-pills">
+<li role="presentation"><a target="_blank" href="https://www.facebook.com/ElektronikKompendium"><span class="fa fa-facebook fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="https://www.instagram.com/elektronikkompendium/"><span class="fa fa-instagram fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="https://www.twitter.com/dasELKO"><span class="fa fa-twitter fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="https://www.elektronik-kompendium.de/news/feed/"><span class="fa fa-rss fa-2x"></span></a></li>
+<li role="presentation"><a target="_blank" href="https://www.elektronik-kompendium.de/service/newsletter/index.htm"><span class="fa fa-envelope fa-2x"></span></a></li>
+</ul>
+</aside>
+
+<aside class="widget">
+<h3 class="widget-title">Elektronik-Set</h3>
+<h4 class="text-center">Lernpaket Einstieg in die Elektronik</h4>
+<p class="text-center"><a href="https://www.elektronik-kompendium.de/shop/elektronik-lernpakete/lernpaket-einstieg-in-die-elektronik"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/lernpaket-einstieg-300.jpg" alt="Lernpaket Einstieg in die Elektronik" title="Lernpaket Einstieg in die Elektronik" border="0" vspace="5"></a></p>
+<p class="text-center"><a class="btn btn-success" href="https://www.elektronik-kompendium.de/shop/elektronik-lernpakete/lernpaket-einstieg-in-die-elektronik">Das Lernpaket jetzt bestellen!</a></p>
+</aside>
+
+<aside class="widget">
+<h3 class="widget-title">Das Buch zu dieser Webseite</h3>
+<h4 class="text-center">Elektronik-Fibel</h4>
+<p class="text-center"><a href="https://www.elektronik-kompendium.de/shop/buecher/elektronik-fibel"><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/buch-efibel-300.jpg" alt="Die Elektronik-Fibel, das Elektronik-Buch" title="Die Elektronik-Fibel, das Elektronik-Buch" border="0" vspace="3"></a></p>
+<p><strong>Kundenmeinung:</strong><br><img src="./Raspberry Pi_ GPIO-Eingang mit Taster_Schalter beschalten_files/kunde06.jpg" alt="Käufer der Elektronik-Fibel" title="Käufer der Elektronik-Fibel" border="0" vspace="3" hspace="10" align="left">
+<i>"Die Elektronik-Fibel ist einfach nur genial. Einfach und verständlich, nach so einem Buch habe ich schon lange gesucht. Es ist einfach alles drin was man so als Azubi braucht. Danke für dieses schöne Werk."</i><br clear="all"></p>
+<p class="text-center"><a class="btn btn-success" href="https://www.elektronik-kompendium.de/shop/buecher/elektronik-fibel">Elektronik-Fibel jetzt bestellen!</a></p>
+</aside>
+
+</div><!-- #secondary -->
+
+</div><!-- row -->
+
+</div><!-- #content -->
+
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+<div class="site-info container">
+
+<div class="row">
+<div class="copyright col-md-6">Elektronik-Kompendium.de</div>
+<nav role="navigation" class="col-md-6"><ul class="nav footer-nav clearfix">
+<li><a href="https://www.elektronik-kompendium.de/service/impressum.htm">Impressum</a></li>
+<li><a href="https://www.elektronik-kompendium.de/service/datenschutz.htm">Datenschutz</a></li>
+</ul></nav>
+</div>
+
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+
+</div><!-- #page -->
+
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><span class="fa fa-2x fa-arrow-circle-up"></span></span></div>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-533288-1']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script');
+ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+
+</body></html>
