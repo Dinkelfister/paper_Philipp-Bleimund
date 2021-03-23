@@ -1,0 +1,5 @@
+-run the chosen code via comand promt (Linus: shell, Windows: CMD or powershell)  
+-first you type how many operator enlargements you want to have (on RaspberryPi zero: 1000)  
+-second you type the number of how many times the test should run  
+  
+Note: every test creates an .txt files with the used time for each operator increment (for 10 test you get 10 files)
