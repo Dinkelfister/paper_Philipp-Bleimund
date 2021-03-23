@@ -1,5 +1,5 @@
 # Facharbeit_Philipp-Bleimund
- All Files used in Philipp Bleimunds paper
+ All files used in Philipp Bleimunds paper
  
  Quick start:
  
